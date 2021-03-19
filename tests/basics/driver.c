@@ -29,6 +29,16 @@ int main ()
     fclose (o);
   }
 
+  /* Empty name.
+   */
+  {
+    FILE *o = tmpfile ();
+    assert (say_hello (o, "") < 0 && errno == EINVAL);
+    fclose (o);
+  }
+
+  /* Wraping function.
+   */
   {
     FILE *o = tmpfile ();
     assert (o != NULL);
